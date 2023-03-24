@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'coachandfocus'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2F5899FEF55D426FB8F1F5DA01C878DB }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4D0A280361254F92BDE6BE46701D08BB }}
           package: .
