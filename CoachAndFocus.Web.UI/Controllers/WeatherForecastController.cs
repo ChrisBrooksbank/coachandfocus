@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace coachandfocus.Controllers;
+namespace CoachAndFocus.Web.UI.Controllers;
 
 [ApiController]
 [Route("[controller]")]
