@@ -338,3 +338,6 @@ ASALocalRun/
 # Local History for Visual Studio
 .localhistory/
 /Treaties.Web.UI/dist/out-tsc/
+
+# Angular
+.angular

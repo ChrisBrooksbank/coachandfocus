@@ -1,4 +1,4 @@
-namespace coachandfocus;
+namespace CoachAndFocus.Web.UI;
 
 public class WeatherForecast
 {
