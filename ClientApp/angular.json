@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "coachandfocus"
+  "defaultProject": "coachandfocus",
+  "cli": {
+    "analytics": false
+  }
 }
