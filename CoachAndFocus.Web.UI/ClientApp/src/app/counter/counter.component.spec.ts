@@ -19,7 +19,7 @@ describe('CounterComponent', () => {
 
   it('should display a title', async(() => {
     const titleText = fixture.nativeElement.querySelector('h1').textContent;
-    expect(titleText).toEqual('oopsCounter');
+    expect(titleText).toEqual('Counter');
   }));
 
   it('should start with count 0, then increments by 1 when clicked', async(() => {
