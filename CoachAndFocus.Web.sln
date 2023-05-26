@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoachAndFocus.Web.UI", "CoachAndFocus.Web.UI\CoachAndFocus.Web.UI.csproj", "{B7C9C37E-AD90-4BCD-81E0-B2926A232660}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoachAndFocus.Web.Application", "CoachAndFocus.Web.Application\CoachAndFocus.Web.Application.csproj", "{D89E888F-B8D9-4E4F-B847-2624B89A417D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B7C9C37E-AD90-4BCD-81E0-B2926A232660}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7C9C37E-AD90-4BCD-81E0-B2926A232660}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7C9C37E-AD90-4BCD-81E0-B2926A232660}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D89E888F-B8D9-4E4F-B847-2624B89A417D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D89E888F-B8D9-4E4F-B847-2624B89A417D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D89E888F-B8D9-4E4F-B847-2624B89A417D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D89E888F-B8D9-4E4F-B847-2624B89A417D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
