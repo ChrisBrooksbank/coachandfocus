@@ -1,8 +1,3 @@
-# ASP.NET Core (.NET Framework)
-# Build and test ASP.NET Core projects targeting the full .NET Framework.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
-
 trigger:
 - main
 
@@ -10,25 +5,70 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+  DOTNET_ROOT: '$(Agent.TempDirectory)/myapp'
 
-steps:
-- task: NuGetToolInstaller@1
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    steps:
+    - checkout: self
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '18.10.x'
 
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    - script: npm install -g @angular/cli
+      displayName: 'Install Angular CLI'
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    - script: |
+        cd CoachAndFocus.Web.UI/ClientApp
+        npm install
+      displayName: 'Install npm dependencies'
+
+    - script: |
+        cd CoachAndFocus.Web.UI/ClientApp
+        ng test --watch=false --browsers=ChromeHeadless
+      displayName: 'Run Angular tests'
+
+    - task: UseDotNet@2
+      inputs:
+        packageType: 'sdk'
+        version: '6.0.x'
+        includePreviewVersions: true
+
+    - script: dotnet build --configuration Release
+      displayName: 'Build with dotnet'
+
+    - script: dotnet publish -c Release -o $(DOTNET_ROOT)/myapp
+      displayName: 'dotnet publish'
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(DOTNET_ROOT)/myapp'
+        ArtifactName: '.net-app'
+        publishLocation: 'Container'
+
+- stage: Deploy
+  jobs:
+  - deployment: DeployJob
+    environment: 'Production'
+    dependsOn: BuildJob
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: current
+            artifact: '.net-app'
+          - task: AzureRmWebAppDeployment@4
+            inputs:
+              ConnectionType: 'AzureRM'
+              azureSubscription: '<Azure-Service-Connection>' # Update this with your Azure service connection id
+              appType: 'webApp'
+              WebAppName: 'coachandfocus'
+              deployToSlotOrASE: true
+              ResourceGroupName: '<Resource-Group-Name>' # Update this with your Azure resource group name
+              SlotName: 'Production'
+              packageForLinux: '$(Pipeline.Workspace)/.net-app/*'
