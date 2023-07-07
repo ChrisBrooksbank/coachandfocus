@@ -42,11 +42,6 @@ stages:
     - script: dotnet build --configuration Release
       displayName: 'Build with dotnet'   
     
-    - task: CopyFiles@2
-      inputs:
-      targetFolder: '$(Build.ArtifactStagingDirectory)'    
+    - task: CopyFiles@2   
 
-    - task: PublishBuildArtifacts@1    
-      displayName: 'Publish Artifact: drop'
-      inputs:
-      PathtoPublish: '$(build.artifactstagingdirectory)'
+    - task: PublishBuildArtifacts@1      
