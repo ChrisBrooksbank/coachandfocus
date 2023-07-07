@@ -40,35 +40,4 @@ stages:
         includePreviewVersions: true
 
     - script: dotnet build --configuration Release
-      displayName: 'Build with dotnet'
-
-    - script: dotnet publish -c Release -o $(DOTNET_ROOT)/myapp
-      displayName: 'dotnet publish'
-
-    - task: PublishBuildArtifacts@1
-      inputs:
-        PathtoPublish: '$(DOTNET_ROOT)/myapp'
-        ArtifactName: '.net-app'
-        publishLocation: 'Container'
-
-- stage: Deploy
-  jobs:
-  - deployment: DeployJob
-    environment: 'Production'
-    dependsOn: BuildJob
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - download: current
-            artifact: '.net-app'
-          - task: AzureRmWebAppDeployment@4
-            inputs:
-              ConnectionType: 'AzureRM'
-              azureSubscription: '<Azure-Service-Connection>' # Update this with your Azure service connection id
-              appType: 'webApp'
-              WebAppName: 'coachandfocus'
-              deployToSlotOrASE: true
-              ResourceGroupName: '<Resource-Group-Name>' # Update this with your Azure resource group name
-              SlotName: 'Production'
-              packageForLinux: '$(Pipeline.Workspace)/.net-app/*'
+      displayName: 'Build with dotnet'   
