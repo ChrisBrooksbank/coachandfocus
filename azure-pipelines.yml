@@ -41,11 +41,8 @@ stages:
 
     - script: dotnet build --configuration Release
       displayName: 'Build with dotnet'   
-      
-- task: AzureRmWebAppDeployment@4
+
+- task: DotNetCoreCLI@2
   inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'ChrisBrooksbankParly (e6ba8781-b352-41d3-acd1-2d969d978b38)'
-    appType: 'webApp'
-    WebAppName: 'coachandfocus'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    command: 'publish'
+    publishWebProjects: true
