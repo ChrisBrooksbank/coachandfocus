@@ -41,7 +41,5 @@ stages:
 
     - script: dotnet build --configuration Release
       displayName: 'Build with dotnet'   
-    - task: DotNetCoreCLI@2
-      inputs:
-        command: 'publish'
-        publishWebProjects: true
+    
+    - task: PublishBuildArtifacts@1
