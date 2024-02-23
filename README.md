@@ -1,11 +1,11 @@
-# Coach and Focus 2023  
-Chris Brooksbanks 2023 Coach And Focus project  
+# Coach and Focus 2024  
+Chris Brooksbanks 2024 Coach And Focus project  
 
-Technology stack will be dotnet 6 and Angular.  
+Technology stack will be dotnet 8 and Angular.  
 
 Everything else to be decided.  
 
-# Pipeline for Deploying Coach And Focus 2023 Angular App to Azure  
+# Pipeline for Deploying Coach And Focus 2024 Angular App to Azure  
 
 ## Introduction
 This document provides a guide on my CoachAndFocus Angular/C# application which is deployed to Azure using CI/CD pipelines. 
