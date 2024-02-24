@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/CoachAndFocus.Web.UI/bin/Debug/net6.0/CoachAndFocus.Web.UI.dll",
+            "program": "${workspaceFolder}/CoachAndFocus.Web.UI/bin/Debug/net8.0/CoachAndFocus.Web.UI.dll",
             "args": [],
             "cwd": "${workspaceFolder}/CoachAndFocus.Web.UI",
             "stopAtEntry": false,
