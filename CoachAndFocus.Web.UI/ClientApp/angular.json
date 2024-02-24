@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "coachandfocus:build:production"
+              "buildTarget": "coachandfocus:build:production"
             },
             "development": {
-              "browserTarget": "coachandfocus:build:development",
+              "buildTarget": "coachandfocus:build:development",
               "proxyConfig": "proxy.conf.js"
             }
           },
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "coachandfocus:build"
+            "buildTarget": "coachandfocus:build"
           }
         },
         "test": {
@@ -132,7 +132,6 @@
       }
     }
   },
-  "defaultProject": "coachandfocus",
   "cli": {
     "analytics": false
   }
