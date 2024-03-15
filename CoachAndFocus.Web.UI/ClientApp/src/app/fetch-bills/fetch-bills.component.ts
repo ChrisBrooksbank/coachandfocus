@@ -1,22 +1,20 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-fetch-data',
-  templateUrl: './fetch-data.component.html'
+  selector: 'app-fetch-bills',
+  templateUrl: './fetch-bills.component.html'
 })
-export class FetchDataComponent {
+export class FetchBillsComponent {
+  public billsData$: Observable<BillsData>;
 
-  public billsData: BillsData = {
-      items: [],
-      totalResults: 0,
-      itemsPerPage: 0
-    };
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
+    this.billsData$ = this.fetchBillsData();
+  }
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<BillsData>(baseUrl + 'bills').subscribe(result => {
-      this.billsData = result;
-    });
+  private fetchBillsData(): Observable<BillsData> {
+    return this.http.get<BillsData>(this.baseUrl + 'bills');
   }
 }
 
