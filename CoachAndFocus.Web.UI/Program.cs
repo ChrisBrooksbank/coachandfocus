@@ -1,8 +1,12 @@
+using CoachAndFocus.Web.UI.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IBillsService, BillsService>();
 
 var app = builder.Build();
 
