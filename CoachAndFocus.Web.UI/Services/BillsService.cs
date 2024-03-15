@@ -1,18 +1,17 @@
 ﻿using CoachAndFocus.Web.UI.Models;
+using Newtonsoft.Json;
 
 namespace CoachAndFocus.Web.UI.Services
 {
     public class BillsService : IBillsService
     {
-        public Task<List<Bill>> GetLatestBillsASync()
+        public async Task<BillsData> GetLatestBillsASync()
         {
-            var bills = new List<Bill>()
-            {
-                new Bill{ BillId = 1, ShortTitle = "Test Bill 1"},
-                new Bill{ BillId = 2, ShortTitle = "Test Bill 2"},
-                new Bill{ BillId = 3, ShortTitle = "Test Bill 3"}
-            };
-            return Task.FromResult(bills);
+            var url = "https://bills-api.parliament.uk/api/v1/Bills?SortOrder=DateUpdatedDescending&skip=0&take=20";
+            var client = new HttpClient();
+            var data = await client.GetStringAsync(url);
+            var billsData = JsonConvert.DeserializeObject<BillsData>(data);
+            return  billsData;
         }
     }
 }

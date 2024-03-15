@@ -4,6 +4,6 @@ namespace CoachAndFocus.Web.UI.Services
 {
     public interface IBillsService
     {
-        Task<List<Bill>> GetLatestBillsASync();
+        Task<BillsData> GetLatestBillsASync();
     }
 }

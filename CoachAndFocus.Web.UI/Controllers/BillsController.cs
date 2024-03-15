@@ -18,7 +18,7 @@ namespace CoachAndFocus.Web.UI.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Bill>> Get()
+        public async Task<BillsData> Get()
         {
             return await _billsService.GetLatestBillsASync();
         }

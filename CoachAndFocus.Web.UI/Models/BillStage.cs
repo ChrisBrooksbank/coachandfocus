@@ -8,5 +8,7 @@
         public string Description { get; set; }
         public string Abbreviation { get; set; }
         public string House { get; set; }
+        public StageSitting[] StageSittings { get; set; }
+        public int SortOrder { get; set; }
     }
 }

@@ -1,20 +1,24 @@
-<h1 id="tableLabel">Parliamentary Data</h1>
+<h1 id="tableLabel">Recently Updated Parliamentary Bills</h1>
 
-<p>This component demonstrates fetching data from the server.</p>
+<p *ngIf="!billsData?.items?.length"><em>Loading...</em></p>
 
-<p *ngIf="!bills?.length"><em>Loading...</em></p>
-
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="bills.length">
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="billsData.items.length">
   <thead>
     <tr>
-      <th>Id</th>
-      <th>Description</th>
+      <th>Bill Id</th>
+      <th>Short Title</th>
+      <th>Current House</th>
+      <th>Current Stage</th>
+      <th>Last Update</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let bill of bills">
+    <tr *ngFor="let bill of billsData.items">
       <td>{{ bill.billId }}</td>
-      <td>{{ bill.shortTitle }}</td>
+      <td><a href="https://bills.parliament.uk/bills/{{ bill.billId }}" target="_blank">{{ bill.shortTitle }}</a></td>
+      <td>{{ bill.currentHouse }}</td>
+      <td>{{ bill.currentStage.description }}</td>
+      <td>{{ bill.lastUpdate | date:'MMMM d, yyyy \'at\' HH:mm' }}</td>
     </tr>
   </tbody>
 </table>
