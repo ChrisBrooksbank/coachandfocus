@@ -14,7 +14,7 @@ export class FetchBillsComponent {
   }
 
   private fetchBillsData(): Observable<BillsData> {
-    return this.http.get<BillsData>(this.baseUrl + 'bills');
+    return this.http.get<BillsData>(this.baseUrl + 'parliament/bills');
   }
 }
 
