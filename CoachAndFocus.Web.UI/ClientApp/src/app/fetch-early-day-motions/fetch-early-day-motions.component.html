@@ -1,0 +1,22 @@
+<h1 id="tableLabel">Early Day Motions</h1>
+
+<p *ngIf="!(earlyDayMotionData$ | async)?.Response?.length"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="(earlyDayMotionData$ | async)?.Response?.length">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Title</th>   
+    <th>Sponsors Count</th>
+    <th>Motion</th> 
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let edm of (earlyDayMotionData$ | async)?.Response">
+    <td>{{ edm.Id }}</td>  
+    <td><a href="https://edm.parliament.uk/early-day-motion//{{ edm.Id }}" target="_blank">{{ edm.Title }}</a></td>
+    <th>{{ edm.SponsorsCount }}</th>
+    <td>{{ edm.MotionText }}</td>
+  </tr>
+  </tbody>
+</table>

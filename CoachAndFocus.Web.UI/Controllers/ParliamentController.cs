@@ -18,6 +18,11 @@ namespace CoachAndFocus.Web.UI.Controllers
 
         [HttpGet]
         [Route("Bills")]
-        public async Task<string> Bills() => await _parliamentReaderService.GetLatestBillsASync();
+        public async Task<string> Bills() => await _parliamentReaderService.GetLatestBillsAsync();
+
+         [HttpGet]
+        [Route("EarlyDayMotions")]
+        public async Task<string> EarlyDayMotions() => await _parliamentReaderService.GetLatestEarlyDayMotionsAsync();
     }
+
 }

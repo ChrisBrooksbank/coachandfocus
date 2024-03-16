@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { FetchBillsComponent } from './fetch-bills/fetch-bills.component';
+import { FetchEarlyDayMotionsComponent } from './fetch-early-day-motions/fetch-early-day-motions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    FetchBillsComponent
+    FetchBillsComponent,
+    FetchEarlyDayMotionsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -22,7 +24,8 @@ import { FetchBillsComponent } from './fetch-bills/fetch-bills.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'fetch-bills', component: FetchBillsComponent }
+      { path: 'fetch-bills', component: FetchBillsComponent },
+      { path: 'fetch-edms', component: FetchEarlyDayMotionsComponent }
     ])
   ],
   providers: [],
