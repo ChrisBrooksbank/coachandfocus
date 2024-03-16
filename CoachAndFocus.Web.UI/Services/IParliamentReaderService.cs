@@ -2,6 +2,7 @@
 {
     public interface IParliamentReaderService
     {
-        Task<string> GetLatestBillsASync();
+        Task<string> GetLatestBillsAsync();
+        Task<string> GetLatestEarlyDayMotionsAsync();
     }
 }
