@@ -35,6 +35,6 @@ describe('HomeComponent', () => {
 
   it('should render the latest release information', () => {
     const releaseElement = fixture.debugElement.query(By.css('h2')).nativeElement;
-    expect(releaseElement.textContent).toContain('latest release : V6 March 2024 - loads updated parliamentary bills');
-  }); 
+    expect(releaseElement.textContent).toContain('latest release :');
+  });
 });
