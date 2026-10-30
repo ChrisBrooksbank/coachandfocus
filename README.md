@@ -1,5 +1,7 @@
 # Coach and Focus
 
+**Live demo:** [coachandfocus.azurewebsites.net](https://coachandfocus.azurewebsites.net)
+
 An ASP.NET Core and Angular application for the Coach and Focus project.
 
 The application combines a .NET 8 backend with an Angular 17 client app and is deployed to Azure through GitHub Actions.
