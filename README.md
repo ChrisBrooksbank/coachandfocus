@@ -1,5 +1,9 @@
 # Coach and Focus
 
+<!-- hub-link -->
+> Part of [Chris's app hub](https://chrisbrooksbank-hub.netlify.app) - a directory of all my deployed apps.
+<!-- /hub-link -->
+
 **Live demo:** [coachandfocus.azurewebsites.net](https://coachandfocus.azurewebsites.net)
 
 An ASP.NET Core and Angular application for the Coach and Focus project.
